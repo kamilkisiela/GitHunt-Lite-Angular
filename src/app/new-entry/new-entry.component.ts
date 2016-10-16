@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Angular2Apollo } from 'angular2-apollo';
+import { ApolloError } from 'apollo-client';
 
 import gql from 'graphql-tag';
 
@@ -32,7 +33,7 @@ export class NewEntryComponent {
           submitRepository(repoFullName: $repoFullName) {
             createdAt
           }
-          
+
         }
       `,
       variables: {
@@ -43,8 +44,8 @@ export class NewEntryComponent {
       .then(() => {
           // success
       })
-      .catch((error) => {
-        // error
+      .catch((error: ApolloError) => {
+        this.error = error.message;
       });
   }
 
