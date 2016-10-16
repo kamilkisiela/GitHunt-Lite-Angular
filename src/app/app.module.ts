@@ -11,6 +11,7 @@ import { FeedComponent } from './feed/feed.component';
 import { routes } from './app.routes';
 import { EntryComponent } from './entry/entry.component';
 import { NewEntryComponent } from './new-entry/new-entry.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NewEntryComponent } from './new-entry/new-entry.component';
     NavigationComponent,
     FeedComponent,
     EntryComponent,
-    NewEntryComponent
+    NewEntryComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
