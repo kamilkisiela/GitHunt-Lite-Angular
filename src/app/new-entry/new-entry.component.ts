@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Angular2Apollo } from 'angular2-apollo';
 import { ApolloError } from 'apollo-client';
 
@@ -16,7 +17,8 @@ export class NewEntryComponent {
   repoFullName: string;
 
   constructor(
-    private apollo: Angular2Apollo
+    private apollo: Angular2Apollo,
+    private router: Router
   ) { }
 
   submit() {
@@ -42,7 +44,7 @@ export class NewEntryComponent {
     })
       .toPromise()
       .then(() => {
-          // success
+        this.router.navigate(['/']);
       })
       .catch((error: ApolloError) => {
         this.error = error.message;
