@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-repo-info',
   templateUrl: './repo-info.component.html',
   styleUrls: ['./repo-info.component.scss']
 })
-export class RepoInfoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class RepoInfoComponent {
+  @Input() description: string;
+  @Input() stars: number;
+  @Input() issues: number;
+  @Input() createdAt: Date;
+  @Input() postedBy: string;
+  @Input() commentsCount: number;
 }

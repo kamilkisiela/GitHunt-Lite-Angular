@@ -1,3 +1,15 @@
-<p>
-  repo-info works!
+<p class="card-text">
+  {{description}}
+</p>
+
+<p class="card-text">
+  <span class="label-info">Stars: {{stars}}</span>
+  
+  <span class="label-info">Issues: {{issues}}</span>
+  
+  <a *ngIf="commentsCount >= 0" href="/">
+    View comments ( {{commentsCount}} )
+  </a>
+
+  <small class="text-muted">Submitted {{createdAt | date: 'HH:mm:ss yyyy/MM/dd'}}</small>
 </p>
