@@ -87,7 +87,18 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
             entry: newEntry
           });
         }
-      }
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        // think of it as a initial data for mutation's result object
+        submitComment: { // name of the mutation
+          __typename: 'Comment', // type that is returned
+          id: null,
+          postedBy: this.currentUser['login'],
+          createdAt: event.createdAt,
+          content: event.comment
+        }
+      },
     }).toPromise();
   }
 
