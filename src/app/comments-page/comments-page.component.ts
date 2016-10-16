@@ -33,13 +33,18 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
       this.name = params['name'];
       this.owner = params['owner'];
       this.repoFullName = `${this.owner}/${this.name}`;
-    });
 
-    this.commentsPageSub = this.apollo.watchQuery({
-      query: commentsPageQuery
-    }).subscribe(({data}) => {
-      this.currentUser = data.currentUser;
-      this.entry = data.entry;
+      if (this.commentsPageSub) {
+        this.commentsPageSub.unsubscribe();
+        this.commentsPageSub = undefined;
+      }
+
+      this.commentsPageSub = this.apollo.watchQuery({
+        query: commentsPageQuery
+      }).subscribe(({data}) => {
+        this.currentUser = data.currentUser;
+        this.entry = data.entry;
+      });
     });
 
   }
