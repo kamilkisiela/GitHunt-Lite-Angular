@@ -1,9 +1,16 @@
 import gql from 'graphql-tag';
 
 export const commentsPageQuery = gql`
-  query commentsPage {
+  query commentsPage ($repoName: String!) {
     currentUser {
       login
+    }
+    entry (repoFullName: $repoName) {
+      comments {
+        postedBy
+        createdAt
+        content
+      }
     }
   }
 `;
