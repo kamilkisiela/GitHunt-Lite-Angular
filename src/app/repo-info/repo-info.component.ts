@@ -6,6 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./repo-info.component.scss']
 })
 export class RepoInfoComponent {
+  @Input() name: string;
+  @Input() owner: string;
   @Input() description: string;
   @Input() stars: number;
   @Input() issues: number;

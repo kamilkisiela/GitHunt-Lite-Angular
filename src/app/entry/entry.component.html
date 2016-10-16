@@ -1,6 +1,8 @@
 <div class="card card-block">
   <h4 class="card-title"> {{repository.owner}} / {{repository.name}} </h4>
   <app-repo-info
+    [name]="repository.name"
+    [owner]="repository.owner"
     [description]="repository.description"
     [stars]="repository.stars"
     [issues]="repository.issues"

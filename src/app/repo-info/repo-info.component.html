@@ -7,7 +7,7 @@
   
   <span class="label-info">Issues: {{issues}}</span>
   
-  <a *ngIf="commentsCount >= 0" href="/">
+  <a *ngIf="commentsCount >= 0" [routerLink]="['/', owner, name]">
     View comments ( {{commentsCount}} )
   </a>
 
