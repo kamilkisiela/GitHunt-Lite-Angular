@@ -16,6 +16,7 @@ import { commentsPageQuery, submitCommentMutation } from './comments-page.models
 export class CommentsPageComponent implements OnInit, OnDestroy {
   currentUser: Object;
   entry: Object;
+  loading: boolean = true;
   name: string;
   owner: string;
   repoFullName: string;
@@ -33,6 +34,7 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
       this.name = params['name'];
       this.owner = params['owner'];
       this.repoFullName = `${this.owner}/${this.name}`;
+      this.loading = true;
 
       if (this.commentsPageSub) {
         this.commentsPageSub.unsubscribe();
@@ -44,9 +46,10 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
         variables: {
           repoName: this.repoFullName
         }
-      }).subscribe(({data}) => {
+      }).subscribe(({data, loading}) => {
         this.currentUser = data.currentUser;
         this.entry = data.entry;
+        this.loading = loading;
       });
     });
 
