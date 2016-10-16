@@ -28,6 +28,9 @@ export const submitCommentMutation = gql`
   mutation submitComment($repoFullName: String!, $commentContent: String!) {
     submitComment(repoFullName: $repoFullName, commentContent: $commentContent) {
       id
+      postedBy
+      createdAt
+      content
     }
   }
 `;

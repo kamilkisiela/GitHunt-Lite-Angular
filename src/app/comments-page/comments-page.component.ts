@@ -65,6 +65,28 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
       variables: {
         repoFullName: this.repoFullName,
         commentContent: event.comment
+      },
+      updateQueries: {
+        commentsPage: (prev, { mutationResult }) => {
+          // get the new comment from the mutation's result
+          const newComment = mutationResult['data'].submitComment;
+
+          // check if comment has already been added 
+          if (isDuplicateComment(newComment, prev['entry'].comments)) {
+            return prev;
+          }
+
+          // create a new entry
+          const newEntry = Object.assign({}, prev['entry'], {
+            // prepend comments with our new comment
+            comments: [newComment, ...prev['entry'].comments]
+          });
+
+          // create a new object with the recently created entry
+          return Object.assign({}, prev, {
+            entry: newEntry
+          });
+        }
       }
     }).toPromise();
   }
@@ -73,4 +95,9 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
     this.commentsPageSub.unsubscribe();
   }
 
+}
+
+function isDuplicateComment(newComment: Object, existingComments: Object[]): boolean {
+  // use Array.some function to check if there is a comment we're looking for
+  return newComment['id'] !== null && existingComments.some(comment => newComment['id'] === comment['id']);
 }
