@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Angular2Apollo } from 'angular2-apollo';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -14,19 +15,31 @@ import { commentsPageQuery, submitCommentMutation } from './comments-page.models
 })
 export class CommentsPageComponent implements OnInit, OnDestroy {
   currentUser: Object;
+  name: string;
+  owner: string;
   repoFullName: string;
   commentsPageSub: Subscription;
+  paramsSub: Subscription;
 
   constructor(
-    private apollo: Angular2Apollo
+    private apollo: Angular2Apollo,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+
+    this.paramsSub = this.route.params.subscribe((params) => {
+      this.name = params['name'];
+      this.owner = params['owner'];
+      this.repoFullName = `${this.owner}/${this.name}`;
+    });
+
     this.commentsPageSub = this.apollo.watchQuery({
       query: commentsPageQuery
     }).subscribe(({data}) => {
       this.currentUser = data.currentUser;
     });
+
   }
 
   onSubmit(event: OnSubmitEvent) {
