@@ -1,4 +1,7 @@
 <app-entry
   *ngFor="let entry of feed | async | select: 'feed'"
-  [repository]="entry.repository">
+  [repository]="entry.repository"
+  [createdAt]="entry.createdAt"
+  [postedBy]="entry.postedBy"
+  [commentsCount]="entry.commentsCount">
 </app-entry>

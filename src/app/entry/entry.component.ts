@@ -7,4 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class EntryComponent {
   @Input() repository: Object;
+  @Input() createdAt: Date;
+  @Input() postedBy: string;
+  @Input() commentsCount: number;
 }
