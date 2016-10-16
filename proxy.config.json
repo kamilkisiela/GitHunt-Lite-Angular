@@ -2,5 +2,13 @@
   "/graphql": {
     "target": "http://localhost:5300",
     "secure": false
+  },
+  "/login": {
+    "target": "http://localhost:5300",
+    "secure": false
+  },
+  "/logout": {
+    "target": "http://localhost:5300",
+    "secure": false
   }
 }
