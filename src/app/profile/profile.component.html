@@ -1,1 +1,8 @@
-<a class="btn btn-primary" routerLink="/submit">Submit</a>
+<span *ngIf="currentUser">
+  Hi {{ currentUser.login }}! 
+  <a class="btn btn-primary" routerLink="/submit">Submit</a>
+  <a class="btn" href="/logout">Logout</a>
+</span>
+<span *ngIf="!currentUser">
+  <a class="btn btn-primary" href="/login">Login</a>
+</span>
