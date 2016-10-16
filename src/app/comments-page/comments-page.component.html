@@ -2,4 +2,4 @@
   comments-page works!
 </p>
 
-<app-new-comment (onSubmit)="onSubmit($event)"></app-new-comment>
+<app-new-comment *ngIf="currentUser" (onSubmit)="onSubmit($event)"></app-new-comment>
