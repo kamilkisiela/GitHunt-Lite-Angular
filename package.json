@@ -4,7 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.config.json",
     "lint": "tslint \"src/**/*.ts\""
   },
   "private": true,
