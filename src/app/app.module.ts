@@ -12,6 +12,7 @@ import { routes } from './app.routes';
 import { EntryComponent } from './entry/entry.component';
 import { NewEntryComponent } from './new-entry/new-entry.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RepoInfoComponent } from './repo-info/repo-info.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
     FeedComponent,
     EntryComponent,
     NewEntryComponent,
-    ProfileComponent
+    ProfileComponent,
+    RepoInfoComponent
   ],
   imports: [
     BrowserModule,
