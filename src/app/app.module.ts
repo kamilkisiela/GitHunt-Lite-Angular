@@ -10,13 +10,15 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FeedComponent } from './feed/feed.component';
 import { routes } from './app.routes';
 import { EntryComponent } from './entry/entry.component';
+import { NewEntryComponent } from './new-entry/new-entry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     FeedComponent,
-    EntryComponent
+    EntryComponent,
+    NewEntryComponent
   ],
   imports: [
     BrowserModule,
