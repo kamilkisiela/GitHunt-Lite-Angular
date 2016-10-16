@@ -13,6 +13,7 @@ import { EntryComponent } from './entry/entry.component';
 import { NewEntryComponent } from './new-entry/new-entry.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RepoInfoComponent } from './repo-info/repo-info.component';
+import { CommentsPageComponent } from './comments-page/comments-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RepoInfoComponent } from './repo-info/repo-info.component';
     EntryComponent,
     NewEntryComponent,
     ProfileComponent,
-    RepoInfoComponent
+    RepoInfoComponent,
+    CommentsPageComponent
   ],
   imports: [
     BrowserModule,
