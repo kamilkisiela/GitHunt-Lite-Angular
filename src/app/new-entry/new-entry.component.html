@@ -1,3 +1,28 @@
-<p>
-  new-entry works!
-</p>
+<div>
+  <h1>Submit a repository</h1>
+
+  <form (submit)="submit()">
+    <div class="form-group">
+      <label for="repositoryInput">
+        Repository name
+      </label>
+      
+      <input
+        type="text"
+        class="form-control"
+        placeholder="apollostack/GitHunt"
+        [(ngModel)]="repoFullName"
+        name="repoFullName"
+        required
+      />
+    </div>
+    
+    <div *ngIf="error" class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+    
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </form>
+</div>
