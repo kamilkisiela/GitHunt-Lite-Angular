@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Angular2Apollo } from 'angular2-apollo';
+import { Subscription } from 'rxjs/Subscription';
 
 import { currentUserQuery } from './profile.models';
 
@@ -8,20 +9,25 @@ import { currentUserQuery } from './profile.models';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   currentUser: Object;
+  currentUserSub: Subscription;
 
   constructor(
     private apollo: Angular2Apollo
   ) { }
 
   ngOnInit() {
-    this.apollo.watchQuery({
+    this.currentUserSub = this.apollo.watchQuery({
       query: currentUserQuery,
       forceFetch: true
     }).subscribe(({data}) => {
       this.currentUser = data.currentUser;
     });
+  }
+
+  ngOnDestroy() {
+    this.currentUserSub.unsubscribe();
   }
 
 }
