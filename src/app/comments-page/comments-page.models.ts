@@ -7,3 +7,11 @@ export const commentsPageQuery = gql`
     }
   }
 `;
+
+export const submitCommentMutation = gql`
+  mutation submitComment($repoFullName: String!, $commentContent: String!) {
+    submitComment(repoFullName: $repoFullName, commentContent: $commentContent) {
+      id
+    }
+  }
+`;
