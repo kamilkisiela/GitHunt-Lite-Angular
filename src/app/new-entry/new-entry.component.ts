@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-new-entry',
   templateUrl: './new-entry.component.html',
   styleUrls: ['./new-entry.component.scss']
 })
-export class NewEntryComponent implements OnInit {
+export class NewEntryComponent {
+  error: string;
+  repoFullName: string;
 
   constructor() { }
 
-  ngOnInit() {
+  submit() {
+    if (!this.repoFullName) {
+      return;
+    }
+
+    this.error = null;
   }
 
 }
