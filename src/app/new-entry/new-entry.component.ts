@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Angular2Apollo } from 'angular2-apollo';
 
+import gql from 'graphql-tag';
+
 import 'rxjs/add/operator/toPromise';
 
 @Component({
@@ -23,7 +25,20 @@ export class NewEntryComponent {
 
     this.error = null;
 
-    this.apollo.mutate({})
+    this.apollo.mutate({
+      mutation: gql`
+        mutation submitRepository($repoFullName: String!) {
+          
+          submitRepository(repoFullName: $repoFullName) {
+            createdAt
+          }
+          
+        }
+      `,
+      variables: {
+        repoFullName: this.repoFullName,
+      },
+    })
       .toPromise()
       .then(() => {
           // success
