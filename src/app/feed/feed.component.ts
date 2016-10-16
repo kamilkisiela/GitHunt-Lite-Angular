@@ -1,7 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Angular2Apollo, ApolloQueryObservable } from 'angular2-apollo';
+import { ApolloQueryResult } from 'apollo-client';
 
-import 'rxjs/add/observable/of';
+import gql from 'graphql-tag';
+
+const feedQuery = gql`
+  query Feed {
+    feed {
+      repository {
+        name
+        owner
+      }
+    }
+  }
+`;
 
 @Component({
   selector: 'app-feed',
@@ -9,25 +21,16 @@ import 'rxjs/add/observable/of';
   styleUrls: ['./feed.component.scss']
 })
 export class FeedComponent implements OnInit {
-  feed: Observable<Object[]>;
+  feed: ApolloQueryObservable<ApolloQueryResult>;
 
-  constructor() { }
+  constructor(
+    private apollo: Angular2Apollo
+  ) { }
 
   ngOnInit() {
-    this.feed = Observable.of([
-      {
-        repository: {
-          owner: 'angular',
-          name: 'angularjs'
-        }
-      },
-      {
-        repository: {
-          owner: 'facebook',
-          name: 'react'
-        }
-      }
-    ]);
+    this.feed = this.apollo.watchQuery({
+      query: feedQuery
+    });
   }
 
 }
