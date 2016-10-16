@@ -3,6 +3,17 @@
 </h2>
 
 <div *ngIf="!loading">
+  <app-repo-info
+    [name]="entry.repository.name"
+    [owner]="entry.repository.owner"
+    [description]="entry.repository.description"
+    [stars]="entry.repository.stars"
+    [issues]="entry.repository.issues"
+    [createdAt]="entry.createdAt"
+    [postedBy]="entry.postedBy">
+  </app-repo-info>
+
+
   <app-new-comment *ngIf="currentUser" (onSubmit)="onSubmit($event)"></app-new-comment>
 
   <app-comment

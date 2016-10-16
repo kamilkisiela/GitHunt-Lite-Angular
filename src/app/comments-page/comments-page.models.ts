@@ -6,6 +6,15 @@ export const commentsPageQuery = gql`
       login
     }
     entry (repoFullName: $repoName) {
+      createdAt
+      postedBy
+      repository {
+        name
+        owner
+        description
+        stars
+        issues
+      }
       comments {
         postedBy
         createdAt
