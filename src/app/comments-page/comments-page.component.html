@@ -3,3 +3,10 @@
 </h2>
 
 <app-new-comment *ngIf="currentUser" (onSubmit)="onSubmit($event)"></app-new-comment>
+
+<app-comment
+  *ngFor="let comment of entry.comments"
+  [content]="comment.content"
+  [createdAt]="comment.createdAt"
+  [author]="comment.postedBy">
+</app-comment>
