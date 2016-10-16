@@ -4,8 +4,6 @@ import { ApolloQueryResult } from 'apollo-client';
 
 import gql from 'graphql-tag';
 
-import 'rxjs/add/operator/map';
-
 const feedQuery = gql`
   query Feed {
     feed {
@@ -32,8 +30,7 @@ export class FeedComponent implements OnInit {
   ngOnInit() {
     this.feed = this.apollo.watchQuery({
       query: feedQuery
-    })
-      .map(result => result.data.feed) as ApolloQueryObservable<ApolloQueryResult>;
+    });
   }
 
 }
