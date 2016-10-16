@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RepoInfoComponent } from './repo-info/repo-info.component';
 import { CommentsPageComponent } from './comments-page/comments-page.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NewCommentComponent } from './new-comment/new-comment.component';
     ProfileComponent,
     RepoInfoComponent,
     CommentsPageComponent,
-    NewCommentComponent
+    NewCommentComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
