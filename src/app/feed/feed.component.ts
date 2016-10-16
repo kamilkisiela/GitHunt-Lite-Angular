@@ -2,18 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Angular2Apollo, ApolloQueryObservable } from 'angular2-apollo';
 import { ApolloQueryResult } from 'apollo-client';
 
-import gql from 'graphql-tag';
-
-const feedQuery = gql`
-  query Feed {
-    feed {
-      repository {
-        name
-        owner
-      }
-    }
-  }
-`;
+import { feedQuery } from './feed.models';
 
 @Component({
   selector: 'app-feed',
