@@ -9,12 +9,14 @@ import { client } from './apollo';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FeedComponent } from './feed/feed.component';
 import { routes } from './app.routes';
+import { EntryComponent } from './entry/entry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    FeedComponent
+    FeedComponent,
+    EntryComponent
   ],
   imports: [
     BrowserModule,
