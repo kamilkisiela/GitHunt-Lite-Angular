@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ApolloModule } from 'angular2-apollo';
+import { EmojifyModule } from 'angular2-emojify';
 
 import { AppComponent } from './app.component';
 import { client } from './apollo';
@@ -34,7 +35,8 @@ import { CommentComponent } from './comment/comment.component';
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    ApolloModule.withClient(client)
+    ApolloModule.withClient(client),
+    EmojifyModule
   ],
   providers: [],
   bootstrap: [AppComponent]
