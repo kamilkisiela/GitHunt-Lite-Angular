@@ -7,9 +7,7 @@
   
   <span class="label-info">Issues: {{issues}}</span>
   
-  <a *ngIf="commentsCount >= 0" [routerLink]="['/', owner, name]" (mouseenter)="prefetchCommentsPage()">
-    View comments ( {{commentsCount}} )
-  </a>
+  <ng-content select=".comments-link"></ng-content>
 
   <small class="text-muted">Submitted {{createdAt | date: 'HH:mm:ss yyyy/MM/dd'}}</small>
 </p>

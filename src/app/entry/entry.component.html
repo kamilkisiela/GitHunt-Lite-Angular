@@ -7,7 +7,11 @@
     [stars]="repository.stars"
     [issues]="repository.issues"
     [createdAt]="createdAt"
-    [postedBy]="postedBy"
-    [commentsCount]="commentsCount">
+    [postedBy]="postedBy">
+    
+    <a *ngIf="commentsCount >= 0" class="comments-link" [routerLink]="['/', repository.owner, repository.name]" (mouseenter)="prefetchCommentsPage()">
+      View comments ( {{commentsCount}} )
+    </a>
+    
   </app-repo-info>
 </div>
